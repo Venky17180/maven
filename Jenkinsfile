@@ -1,22 +1,20 @@
-@Library('mylibrary')_
-
-
+@Library('mylibrary') _
 pipeline
 {
     agent any
     stages
     {
-        stage('Download_Master')
+        stage('download')
         {
             steps
             {
                 script
                 {
-                    cicd.gitDownload("maven")
+                    cicd.gitdownload("maven")
                 }
             }
         }
-        stage('Build_Master')
+        stage('build')
         {
             steps
             {
@@ -26,40 +24,36 @@ pipeline
                 }
             }
         }
-        stage('Deployment_Master')
+        stage('deploy')
         {
             steps
             {
                 script
                 {
-                    cicd.deployTomcat("DeclarativePipelinewithSharedLibraries","172.31.31.19","myapp")
+                    cicd.deployTomcat("declarativepipelinewithsharedlibrary","172.31.19.226","testapp")
                 }
             }
         }
-        stage('Testing_Master')
+        stage('testing')
         {
             steps
             {
                 script
                 {
-                    cicd.gitDownload("FunctionalTesting")
-                    cicd.executeSelenium("DeclarativePipelinewithSharedLibraries")
+                    cicd.gitdownload("Functionaltesting")
+                    cicd.runselenium("declarativepipelinewithsharedlibrary")
                 }
             }
         }
-        stage('Delivery_Master')
+        stage('delivery')
         {
             steps
             {
-
-	    script
-
                 script
-
                 {
-                    cicd.deployTomcat("DeclarativePipelinewithSharedLibraries","172.31.25.180","myprodappp")                }
+                    cicd.deployTomcat("declarativepipelinewithsharedlibrary","172.31.16.176","prodapp")
+                }
             }
         }
     }
 }
-
