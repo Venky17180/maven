@@ -51,12 +51,17 @@ pipeline
         {
             steps
             {
+
 	    script
+
+                script
+
                 {
-                    cicd.deployTomcat("DeclarativePipelinewithSharedLibraries","172.31.25.180","myprodapp")
-                }
+                    cicd.deployTomcat("DeclarativePipelinewithSharedLibraries","172.31.25.180","myprodappp)                }
             }
         }
     }
 }
 
+=======
+>>>>>>> 4a96ceeb3828c174be6679d2b7294fb956fad43d
